@@ -1,10 +1,10 @@
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DecimalFormat;
-import java.util.HashMap;
-import java.util.InputMismatchException;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class OptionMenu {
 	Scanner menuInput = new Scanner(System.in);
@@ -64,6 +64,7 @@ public class OptionMenu {
 					System.out.println(acc.getAllAccountsBalance());
 					break;
 				case 4:
+					saveInfo();
 					end = true;
 					break;
 				default:
@@ -216,4 +217,22 @@ public class OptionMenu {
 		menuInput.close();
 		System.exit(0);
 	}
+
+
+	public void saveInfo(){
+		Gson gsonObj = new Gson();
+		String jsonStr = gsonObj.toJson(data);
+		System.out.println(jsonStr);
+	}
+
+//	private void saveInfo() throws IOException {
+//
+//		Properties properties = new Properties();
+//
+//		for(Map.Entry<Integer, Account> entry: data.entrySet()){
+//			properties.put(entry.getKey().toString(), entry.getValue().toString());
+//		}
+//		properties.store(new FileOutputStream("data.properties"), null);
+//	}
+
 }
