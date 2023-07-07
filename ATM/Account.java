@@ -52,6 +52,13 @@ public class Account {
 	public double getSavingBalance() {
 		return savingBalance;
 	}
+	public String getAllAccountsBalance(){
+		String output = "Checking Balance: $" + checkingBalance +
+						"\nSavings Balance: $" + savingBalance +
+						"\nAll account balance: $"+ (checkingBalance+savingBalance)+
+						"\n";
+		return output;
+	}
 
 	public double calcCheckingWithdraw(double amount) {
 		checkingBalance = (checkingBalance - amount);
